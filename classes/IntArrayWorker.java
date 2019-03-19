@@ -127,4 +127,13 @@ public class IntArrayWorker
     }
     return BigBoi;
   }
+  public int getColTotal(int col)
+  {
+    int total=0;
+    for(int j =0;j<matrix.length;j++)
+    {
+        total+= matrix[j][col];
+    }
+    return total;
+  }
 }
