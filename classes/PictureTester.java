@@ -50,11 +50,50 @@ public class PictureTester
     swan.edgeDetection(10);
     swan.explore();
   }
-  public static void keepOnlyBlue()
+  public static void KeepOnlyBlue()
   {
-    Pixel[][] pixels = getPixels2D();
+    Picture spike = new Picture("Golden_Spikes.jpg");
+    Pixel[][] pixels = spike.getPixels2D();
+    for(Pixel[] rowArray: pixels)
+    {
+      for(Pixel pixelObj: rowArray)
+      {
+        pixelObj.setGreen(0);
+        pixelObj.setRed(0);
+      }
+    }
+    spike.explore();
   }
-  
+  public static void Negate()
+  {
+   Picture spike = new Picture("Golden_Spikes.jpg");
+   Pixel[][] pixels = spike.getPixels2D();
+    for(Pixel[] rowArray: pixels)
+    {
+      for(Pixel pixelObj: rowArray)
+      {
+        pixelObj.setBlue(255-pixelObj.getBlue());
+        pixelObj.setGreen(255-pixelObj.getGreen());
+        pixelObj.setRed(255-pixelObj.getRed());
+      }
+    }
+    spike.explore();
+  }
+  public static void Grayscale()
+  {
+    Picture spike = new Picture("Golden_Spikes.jpg");
+    Pixel[][] pixels = spike.getPixels2D();
+    for(Pixel[] rowArray: pixels)
+    {
+      for(Pixel pixelObj: rowArray)
+      {
+        pixelObj.setBlue((pixelObj.getGreen()+pixelObj.getBlue()+pixelObj.getRed())/3);
+        pixelObj.setGreen((pixelObj.getGreen()+pixelObj.getBlue()+pixelObj.getRed())/3);
+        pixelObj.setRed((pixelObj.getGreen()+pixelObj.getBlue()+pixelObj.getRed())/3);
+      }
+    }
+    spike.explore();
+  }
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -62,12 +101,12 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
-    //testKeepOnlyBlue();
-    //testKeepOnlyRed();
-    //testKeepOnlyGreen();
-    //testNegate();
-    //testGrayscale();
+    //testZeroBlue();
+    //KeepOnlyBlue();
+    //KeepOnlyRed();
+    //KeepOnlyGreen();
+    //Negate();
+    //Grayscale();
     //testFixUnderwater();
     //testMirrorVertical();
     //testMirrorTemple();
