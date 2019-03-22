@@ -94,6 +94,21 @@ public class PictureTester
     }
     spike.explore();
   }
+  public static void FixUnderwater()
+  {
+    Picture water = new Picture("water.jpg");
+    Pixel[][] pixels = water.getPixels2D();
+    for(Pixel[] rowArray: pixels)
+    {
+      for(Pixel pixelObj: rowArray)
+      {
+        pixelObj.setBlue(pixelObj.getBlue()-50);
+        pixelObj.setGreen(pixelObj.getGreen()-50);
+        pixelObj.setRed(pixelObj.getRed()+50);
+      }
+    }
+    water.explore();
+  }
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -107,7 +122,7 @@ public class PictureTester
     //KeepOnlyGreen();
     //Negate();
     //Grayscale();
-    //testFixUnderwater();
+    FixUnderwater();
     //testMirrorVertical();
     //testMirrorTemple();
     //testMirrorArms();
