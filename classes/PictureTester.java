@@ -27,7 +27,7 @@ public class PictureTester
   }
   
   /** Method to test mirrorTemple */
-  public static void testMirrorTemple()
+  public static void MirrorTemple()
   {
     Picture temple = new Picture("temple.jpg");
     temple.explore();
@@ -132,19 +132,34 @@ public class PictureTester
     Picture spike = new Picture("Golden_Spikes.jpg");
     Pixel[][] pixels = spike.getPixels2D();
     Pixel topPixel = null;
-    Pixel bottemPixel = null;
-    int height = 0;
-    for(int i =0;i<pixels)
-    for(int row=0; row < pixels[0].length;row++)
+    Pixel bottomPixel = null;
+    int height = pixels.length;
+    for(int row=0; row < height/2;row++)
     {
-      for(int col = 0; col<height/2;col++)
+      for(int col = 0; col<pixels[0].length;col++)
       {
         topPixel = pixels[row][col];
-        bottemPixel = pixels[row][height - 1 - col];
-        topPixel.setColor(bottemPixel.getColor());
+        bottomPixel = pixels[height - 1 - row][col];
+        bottomPixel.setColor(topPixel.getColor());
       }
     }
     spike.explore();
+  }
+  public static void MirrorArms()
+  {
+    Picture snowman = new Picture("snowman.jpg");
+    snowman.explore();
+    Pixel[][] pixels = snowman.getPixels2D();
+    int leftArmPoint = 170;
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    for(int row = 159;row<191;row++)
+    {
+      for (int col = 105; col < leftArmPoint; col++)
+      {
+        topPixel
+      }
+    }
   }
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -161,9 +176,9 @@ public class PictureTester
     //Grayscale();
     //FixUnderwater();
     //MirrorVertical();
-    MirrorHorizontal();
-    //testMirrorTemple();
-    //testMirrorArms();
+    //MirrorHorizontal();
+    //MirrorTemple();
+    MirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
