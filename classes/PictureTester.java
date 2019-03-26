@@ -148,18 +148,48 @@ public class PictureTester
   public static void MirrorArms()
   {
     Picture snowman = new Picture("snowman.jpg");
-    snowman.explore();
     Pixel[][] pixels = snowman.getPixels2D();
-    int leftArmPoint = 170;
+    int leftArmPoint = 191;
+    int rightArmPoint = 196;
     Pixel topPixel = null;
     Pixel bottomPixel = null;
-    for(int row = 159;row<191;row++)
+    for(int row = 159;row<leftArmPoint;row++)
     {
-      for (int col = 105; col < leftArmPoint; col++)
+      for (int col = 105; col < 170; col++)
       {
-        topPixel
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[leftArmPoint - row +leftArmPoint][col];
+        bottomPixel.setColor(topPixel.getColor());
       }
     }
+    for(int row = 171; row<rightArmPoint;row++)
+    {
+      for(int col = 238; col< 294;col++)
+      {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[rightArmPoint-row+rightArmPoint][col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    }
+    snowman.explore();
+  }
+  public static void MirrorGull()
+  {
+    Picture seagulls = new Picture("seagull.jpg");
+    Pixel[][] pixels = seagulls.getPixels2D();
+    int shift = 344-238;
+    Pixel copy = null;
+    Pixel paste = null;
+    for(int row = 235;row<322;row++)
+    {
+      for(int col = 238;col<344;col++)
+      {
+        copy = pixels[row][col];
+        paste =pixels[row][col+shift];
+        paste.setColor(copy.getColor());
+      }
+    }
+    seagulls.explore();
   }
   /** Main method for testing.  Every class can have a main
     * method in Java */
@@ -178,8 +208,8 @@ public class PictureTester
     //MirrorVertical();
     //MirrorHorizontal();
     //MirrorTemple();
-    MirrorArms();
-    //testMirrorGull();
+    //MirrorArms();
+    MirrorGull();
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
